@@ -1,0 +1,3 @@
+C:/Users/kuba/CLionProjects/2048bot/cmake-build-debug/CMakeFiles/2048bot.dir
+C:/Users/kuba/CLionProjects/2048bot/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/kuba/CLionProjects/2048bot/cmake-build-debug/CMakeFiles/rebuild_cache.dir
