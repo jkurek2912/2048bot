@@ -8,4 +8,6 @@ add_executable(2048bot main.cpp
         utils.h
         helpers.cpp
         helpers.h
+        bot.cpp
+        bot.h
 )
