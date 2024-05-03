@@ -61,6 +61,12 @@ build CMakeFiles/2048bot.dir/utils.cpp.obj: CXX_COMPILER__2048bot_unscanned_Debu
   OBJECT_DIR = CMakeFiles\2048bot.dir
   OBJECT_FILE_DIR = CMakeFiles\2048bot.dir
 
+build CMakeFiles/2048bot.dir/helpers.cpp.obj: CXX_COMPILER__2048bot_unscanned_Debug C$:/Users/kuba/CLionProjects/2048bot/helpers.cpp || cmake_object_order_depends_target_2048bot
+  DEP_FILE = CMakeFiles\2048bot.dir\helpers.cpp.obj.d
+  FLAGS = -g -fdiagnostics-color=always
+  OBJECT_DIR = CMakeFiles\2048bot.dir
+  OBJECT_FILE_DIR = CMakeFiles\2048bot.dir
+
 
 # =============================================================================
 # Link build statements for EXECUTABLE target 2048bot
@@ -69,7 +75,7 @@ build CMakeFiles/2048bot.dir/utils.cpp.obj: CXX_COMPILER__2048bot_unscanned_Debu
 #############################################
 # Link the executable 2048bot.exe
 
-build 2048bot.exe: CXX_EXECUTABLE_LINKER__2048bot_Debug CMakeFiles/2048bot.dir/main.cpp.obj CMakeFiles/2048bot.dir/utils.cpp.obj
+build 2048bot.exe: CXX_EXECUTABLE_LINKER__2048bot_Debug CMakeFiles/2048bot.dir/main.cpp.obj CMakeFiles/2048bot.dir/utils.cpp.obj CMakeFiles/2048bot.dir/helpers.cpp.obj
   FLAGS = -g
   LINK_LIBRARIES = -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = CMakeFiles\2048bot.dir

@@ -6,4 +6,6 @@ set(CMAKE_CXX_STANDARD 17)
 add_executable(2048bot main.cpp
         utils.cpp
         utils.h
+        helpers.cpp
+        helpers.h
 )
