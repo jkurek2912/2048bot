@@ -10,6 +10,8 @@ int main() {
     cout << "playing...\n";
     while (!isDead(state)) {
         char c = findBestMove(state);
+        cout << c << endl;
+        sendKeystrokes(c);
         state = createStateVector();
     }
 }

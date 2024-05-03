@@ -10,8 +10,8 @@ using namespace std;
 
 char findBestMove(vector<vector<int>> state);
 
-int valueOfState(vector<vector<int>> state);
+double valueOfState(vector<vector<int>> state);
 
-vector<vector<int>> generateStates(vector<vector<int>> state);
+void nextState(vector<vector<int>>& state, char c);
 
 #endif //BOT_H
