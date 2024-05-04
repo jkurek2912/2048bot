@@ -15,4 +15,6 @@ void getCoordinate();
 
 char getRandomDirection();
 
+vector<vector<int>> makeState();
+
 #endif //HELPERS_H

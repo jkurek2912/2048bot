@@ -1,5 +1,20 @@
 #include "helpers.h"
 
+vector<vector<int>> makeState() {
+    vector<vector<int>> state;
+    for (int i = 0; i < 4; i++) {
+        vector<int> temp;
+        int a, b, c, d;
+        cin >> a >> b >> c >> d;
+        temp.push_back(a);
+        temp.push_back(b);
+        temp.push_back(c);
+        temp.push_back(d);
+        state.push_back(temp);
+    }
+    return state;
+}
+
 char getRandomDirection() {
     random_device rd;
     mt19937 gen(rd());

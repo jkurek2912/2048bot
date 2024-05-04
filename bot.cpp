@@ -2,69 +2,6 @@
 #include "helpers.h"
 #include "utils.h"
 
-
-char findBestMove(vector<vector<int>> state) {
-    vector<vector<int>> w = state;
-    vector<vector<int>> a = state;
-    vector<vector<int>> s = state;
-    vector<vector<int>> d = state;
-    char bestMove = 'w';
-    double max = 0;
-
-    if (nextState(w, 'w')) {
-        vector<pair<int, vector<vector<int>>>> wMoves = permutations(w);
-        double wScore = 0;
-        for (auto & wMove : wMoves) {
-            wScore += valueOfState(wMove.second, wMove.first);
-        }
-        wScore /= (double) wMoves.size();
-        if (wScore >= max) {
-            max = wScore;
-            bestMove = 'w';
-        }
-    }
-
-    if (nextState(a, 'a')) {
-        vector<pair<int, vector<vector<int>>>> aMoves = permutations(a);
-        double aScore = 0;
-        for (auto & aMove : aMoves) {
-            aScore += valueOfState(aMove.second, aMove.first);
-        }
-        aScore /= (double) aMoves.size();
-        if (aScore >= max) {
-            max = aScore;
-            bestMove = 'a';
-        }
-    }
-
-    if (nextState(s, 's')) {
-        vector<pair<int, vector<vector<int>>>> sMoves = permutations(s);
-        double sScore = 0;
-        for (auto & sMove : sMoves) {
-            sScore += valueOfState(sMove.second, sMove.first);
-        }
-        sScore /= (double) sMoves.size();
-        if (sScore >= max) {
-            max = sScore;
-            bestMove = 's';
-        }
-    }
-
-    if (nextState(d, 'd')) {
-        vector<pair<int, vector<vector<int>>>> dMoves = permutations(d);
-        double dScore = 0;
-        for (auto & dMove : dMoves) {
-            dScore += valueOfState(dMove.second, dMove.first);
-        }
-        dScore /= (double) dMoves.size();
-        if (dScore >= max) {
-            max = dScore;
-            bestMove = 'd';
-        }
-    }
-    return bestMove;
-}
-
 bool nextState(vector<vector<int>> &state, char c) {
     bool moved;
     switch (c) {
@@ -162,6 +99,68 @@ bool moveRight(vector<vector<int>> &state) {
         }
     }
     return moved;
+}
+
+char findBestMove(vector<vector<int>> state) {
+    vector<vector<int>> w = state;
+    vector<vector<int>> a = state;
+    vector<vector<int>> s = state;
+    vector<vector<int>> d = state;
+    char bestMove = 'w';
+    double max = 0;
+
+    if (nextState(w, 'w')) {
+        vector<pair<int, vector<vector<int>>>> wMoves = permutations(w);
+        double wScore = 0;
+        for (auto & wMove : wMoves) {
+            wScore += valueOfState(wMove.second, wMove.first);
+        }
+        wScore /= (double) wMoves.size();
+        if (wScore >= max) {
+            max = wScore;
+            bestMove = 'w';
+        }
+    }
+
+    if (nextState(a, 'a')) {
+        vector<pair<int, vector<vector<int>>>> aMoves = permutations(a);
+        double aScore = 0;
+        for (auto & aMove : aMoves) {
+            aScore += valueOfState(aMove.second, aMove.first);
+        }
+        aScore /= (double) aMoves.size();
+        if (aScore >= max) {
+            max = aScore;
+            bestMove = 'a';
+        }
+    }
+
+    if (nextState(s, 's')) {
+        vector<pair<int, vector<vector<int>>>> sMoves = permutations(s);
+        double sScore = 0;
+        for (auto & sMove : sMoves) {
+            sScore += valueOfState(sMove.second, sMove.first);
+        }
+        sScore /= (double) sMoves.size();
+        if (sScore >= max) {
+            max = sScore;
+            bestMove = 's';
+        }
+    }
+
+    if (nextState(d, 'd')) {
+        vector<pair<int, vector<vector<int>>>> dMoves = permutations(d);
+        double dScore = 0;
+        for (auto & dMove : dMoves) {
+            dScore += valueOfState(dMove.second, dMove.first);
+        }
+        dScore /= (double) dMoves.size();
+        if (dScore >= max) {
+            max = dScore;
+            bestMove = 'd';
+        }
+    }
+    return bestMove;
 }
 
 vector<pair<int, vector<vector<int>>>> permutations(vector<vector<int>> &state) {
