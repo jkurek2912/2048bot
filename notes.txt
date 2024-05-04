@@ -34,4 +34,5 @@ Weights: totalValue = ((0.7) * sum) + ((sum / 2) * zeroes) + ((sum / 4) * mergeP
   10 - 2580
   AVERAGE: 3591.6
   ~2.92 times better than random moves
+  PB: 7192
 

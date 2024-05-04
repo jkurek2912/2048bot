@@ -186,7 +186,7 @@ double valueOfState(vector<vector<int>> state, int newNum) {
     double totalValue;
     double zeroes = 0;
     double mergePotential = 0;
-    int sum = 0;
+    double sum = 0;
     int max = 0;
     pair<int, int> maxLocation;
     vector<vector<int>> neighbors = {{0,  1},
@@ -200,7 +200,6 @@ double valueOfState(vector<vector<int>> state, int newNum) {
             if (state[i][j] >= max) {
                 max = state[i][j];
                 maxLocation = {i, j};
-
             }
             for (int l = 0; l < 4; l++) {
                 int x = i + neighbors[l][0];
@@ -213,9 +212,21 @@ double valueOfState(vector<vector<int>> state, int newNum) {
             }
         }
     }
-    totalValue = ((0.7) * sum) + ((sum / 2) * zeroes) + ((sum / 4) * mergePotential) + (log2(max) * (sum / 10));
+    totalValue = ((sum / 2) * zeroes) + ((sum / 4) * mergePotential) + (log2(max) * (sum / 10));
     int x = maxLocation.first;
     int y = maxLocation.second;
-    if ((x == 0 && y == 0) || (x == 0 && y == 3) || (x == 3 && y == 0) || (x == 3 && y == 3)) totalValue *= 1.5;
+    totalValue *= maxValueLocationBoost(x, y);
     return (p * totalValue);
+}
+
+double maxValueLocationBoost(int x, int y) {
+    double modifier = 1;
+    if ((x == 0 && y == 0) || (x == 0 && y == 3) || (x == 3 && y == 0) || (x == 3 && y == 3)) {
+        modifier = 1.8;
+    }
+    if ((x == 1 && y == 0) || (x == 0 && y == 1) || (x == 0 && y == 2) || (x == 1 && y == 3) ||
+        (x == 2 && y == 3) || (x == 3 && y == 2) || (x == 3 && y == 1) || (x == 2 && y == 0)) {
+        modifier = 1.3;
+    }
+    return modifier;
 }

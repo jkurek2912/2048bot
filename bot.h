@@ -24,4 +24,6 @@ bool moveRight(vector<vector<int>> &state);
 
 vector<pair<int, vector<vector<int>>>> permutations(vector<vector<int>>& state);
 
+double maxValueLocationBoost(int x, int y);
+
 #endif //BOT_H
