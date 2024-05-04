@@ -12,6 +12,15 @@ char findBestMove(vector<vector<int>> state);
 
 double valueOfState(vector<vector<int>> state);
 
-void nextState(vector<vector<int>>& state, char c);
+void nextState(vector<vector<int>> &state);
+
+void moveUp(vector<vector<int>> &state);
+
+void moveDown(vector<vector<int>> &state);
+
+void moveLeft(vector<vector<int>> &state);
+
+void moveRight(vector<vector<int>> &state);
+
 
 #endif //BOT_H

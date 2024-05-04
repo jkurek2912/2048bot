@@ -12,102 +12,96 @@ char getRandomDirection() {
             return 's'; // Down
         case 2:
             return 'a'; // Left
-        case 3:
+        default:
             return 'd'; // Right
     }
 }
 
 char findBestMove(vector<vector<int>> state) {
-    vector<vector<int>> w = state;
-    vector<vector<int>> a = state;
-    vector<vector<int>> s = state;
-    vector<vector<int>> d = state;
-    nextState(w, 'w');
-    nextState(a, 'a');
-    nextState(s, 's');
-    nextState(d, 'd');
-    double wScore = valueOfState(w);
-    double aScore = valueOfState(a);
-    double sScore = valueOfState(s);
-    double dScore = valueOfState(d);
-    cout << "w\n";
-    printState(w);
-    cout << "a\n";
-    printState(a);
-    cout << "s\n";
-    printState(s);
-    cout << "d\n";
-    printState(d);
-    cout << wScore << ", " << aScore << ", " << sScore << ", " << dScore << endl;
-    if (wScore >= aScore && wScore >= sScore && wScore >= dScore && w != state) return 'w';
-    if (aScore >= wScore && aScore >= sScore && aScore >= dScore && a != state) return 'a';
-    if (sScore >= wScore && sScore >= aScore && wScore >= dScore && s != state) return 's';
-    if (dScore >= wScore && dScore >= aScore && dScore >= sScore && d != state) return 'd';
-    return getRandomDirection();
+
+
+
 }
 
 void nextState(vector<vector<int>>& state, char c) {
-    if (c == 'w') {
-        for (int i = 1; i < 4; i++) {
-            for (int j = 0; j < 4; j++) {
-                int x = i;
-                while (x > 0 && (state[x - 1][j] == 0 || state[x - 1][j] == state[x][j]) && state[x][j] != 0) {
-                    if (state[x - 1][j] == state[x][j]) {
-                        state[x - 1][j] *= 2;
-                    } else {
-                        state[x - 1][j] = state[x][j];
-                    }
-                    state[x][j] = 0;
-                    x--;
+    switch(c) {
+        case 'w':
+            moveUp(state);
+        case 'a':
+            moveLeft(state);
+        case 's':
+            moveDown(state);
+        default:
+            moveRight(state);
+    }
+}
+
+void moveUp(vector<vector<int>>& state) {
+    for (int i = 1; i < 4; i++) {
+        for (int j = 0; j < 4; j++) {
+            int x = i;
+            while (x > 0 && (state[x - 1][j] == 0 || state[x - 1][j] == state[x][j]) && state[x][j] != 0) {
+                if (state[x - 1][j] == state[x][j]) {
+                    state[x - 1][j] *= 2;
+                } else {
+                    state[x - 1][j] = state[x][j];
                 }
+                state[x][j] = 0;
+                x--;
             }
         }
     }
-    if (c == 's') {
-        for (int i = 3; i >= 0; i--) {
-            for (int j = 0; j < 4; j++) {
-                int x = i;
-                while (x < 3 && (state[x + 1][j] == 0 || state[x + 1][j] == state[x][j]) && state[x][j] != 0) {
-                    if (state[x + 1][j] == state[x][j]) {
-                        state[x + 1][j] *= 2;
-                    } else {
-                        state[x + 1][j] = state[x][j];
-                    }
-                    state[x][j] = 0;
-                    x++;
+
+}
+
+
+void moveDown(vector<vector<int>>& state) {
+    for (int i = 3; i >= 0; i--) {
+        for (int j = 0; j < 4; j++) {
+            int x = i;
+            while (x < 3 && (state[x + 1][j] == 0 || state[x + 1][j] == state[x][j]) && state[x][j] != 0) {
+                if (state[x + 1][j] == state[x][j]) {
+                    state[x + 1][j] *= 2;
+                } else {
+                    state[x + 1][j] = state[x][j];
                 }
+                state[x][j] = 0;
+                x++;
             }
         }
     }
-    if (c == 'a') {
-        for (int i = 0; i < 4; i++) {
-            for (int j = 1; j < 4; j++) {
-                int x = j;
-                while (x > 0 && (state[i][x - 1] == 0 || state[i][x - 1] == state[i][x]) && state[i][x] != 0) {
-                    if (state[i][x - 1] == state[i][x]) {
-                        state[i][x - 1] *= 2;
-                    } else {
-                        state[i][x - 1] = state[i][x];
-                    }
-                    state[i][x] = 0;
-                    x--;
+
+}
+
+void moveLeft(vector<vector<int>>& state) {
+    for (int i = 0; i < 4; i++) {
+        for (int j = 1; j < 4; j++) {
+            int x = j;
+            while (x > 0 && (state[i][x - 1] == 0 || state[i][x - 1] == state[i][x]) && state[i][x] != 0) {
+                if (state[i][x - 1] == state[i][x]) {
+                    state[i][x - 1] *= 2;
+                } else {
+                    state[i][x - 1] = state[i][x];
                 }
+                state[i][x] = 0;
+                x--;
             }
         }
     }
-    if (c == 'd') {
-        for (int i = 0; i < 4; i++) {
-            for (int j = 3; j >= 0; j--) {
-                int x = j;
-                while (x < 3 && (state[i][x + 1] == 0 || state[i][x + 1] == state[i][x]) && state[i][x] != 0) {
-                    if (state[i][x + 1] == state[i][x]) {
-                        state[i][x + 1] *= 2;
-                    } else {
-                        state[i][x + 1] = state[i][x];
-                    }
-                    state[i][x] = 0;
-                    x++;
+}
+
+void moveRight(vector<vector<int>>& state) {
+    for (int i = 0; i < 4; i++) {
+        for (int j = 3; j >= 0; j--) {
+            int x = j;
+            while (x < 3 && (state[i][x + 1] == 0 || state[i][x + 1] == state[i][x]) && state[i][x] != 0) {
+                if (state[i][x + 1] == state[i][x]) {
+                    state[i][x + 1] *= 2;
+                } else {
+                    state[i][x + 1] = state[i][x];
                 }
+                state[i][x] = 0;
+                x++;
             }
         }
     }
