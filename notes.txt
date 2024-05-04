@@ -1,0 +1,37 @@
+Created by Jacob Kurek on Thursday, May 2, 2024
+
+Optimization list:
+   Instead of storing each state as a 2d vector, I can represent each value as the exponent 2 is raised to in order to
+   create that value. For example, 2048 would be 11 because 2^(11) is 2048. Then, I could store the state in a 64-bit
+   integer where each group of 4 bits is one index in the state. This would allow me to store values up to
+   2^(15) = 32768 in a 64-bit integer. I could then parse out the values using bit-shifts.
+
+Random moves only
+  1 - 2376
+  2 - 544
+  3 - 1364
+  4 - 576
+  5 - 340
+  6 - 1376
+  7 - 1532
+  8 - 1348
+  9 - 688
+  10 - 2240
+  AVERAGE: 1226.8
+
+First iteration of bot, searches all states of one level
+Weights: totalValue = ((0.7) * sum) + ((sum / 2) * zeroes) + ((sum / 4) * mergePotential) + (log2(max) * (sum / 10));
+         totalValue *= 2 if max value is in a corner
+  1 - 2308
+  2 - 5328
+  3 - 2604
+  4 - 3360
+  5 - 3392
+  6 - 1064
+  7 - 6772
+  8 - 5196
+  9 - 3312
+  10 - 2580
+  AVERAGE: 3591.6
+  ~2.92 times better than random moves
+

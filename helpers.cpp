@@ -1,5 +1,21 @@
 #include "helpers.h"
 
+char getRandomDirection() {
+    random_device rd;
+    mt19937 gen(rd());
+    uniform_int_distribution<> distr(0, 3);
+    int randomNumber = distr(gen);
+    switch (randomNumber) {
+        case 0:
+            return 'w'; // Up
+        case 1:
+            return 's'; // Down
+        case 2:
+            return 'a'; // Left
+        default:
+            return 'd'; // Right
+    }
+}
 void printState(vector<vector<int>> state) {
     cout << "--------------------\n";
     for (int i = 0; i < 4; i++) {

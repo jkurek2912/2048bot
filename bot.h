@@ -10,17 +10,18 @@ using namespace std;
 
 char findBestMove(vector<vector<int>> state);
 
-double valueOfState(vector<vector<int>> state);
+double valueOfState(vector<vector<int>> state, int p);
 
-void nextState(vector<vector<int>> &state);
+bool nextState(vector<vector<int>> &state, char c);
 
-void moveUp(vector<vector<int>> &state);
+bool moveUp(vector<vector<int>> &state);
 
-void moveDown(vector<vector<int>> &state);
+bool moveDown(vector<vector<int>> &state);
 
-void moveLeft(vector<vector<int>> &state);
+bool moveLeft(vector<vector<int>> &state);
 
-void moveRight(vector<vector<int>> &state);
+bool moveRight(vector<vector<int>> &state);
 
+vector<pair<int, vector<vector<int>>>> permutations(vector<vector<int>>& state);
 
 #endif //BOT_H
